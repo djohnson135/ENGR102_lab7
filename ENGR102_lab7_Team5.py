@@ -48,16 +48,16 @@ while round1 >= 0:
 
 for k in range(len(names)):
     score.append(int(first[k]) + int(second[k]))
-sort = [x for _,x in sorted(zip(names,score))]
 
-for k in range(len(sort)):
-    if k > (len(sort) / 2):
-        above.append(sort[k])
-    elif k < (len(sort) / 2):
-        below.append(sort[k])
+keydict = dict(zip(names, score))
+names.sort(key=keydict.get)
 
-print(sort)
-print(above)
-print(below)
-print(names)
-print(score)
+
+for k in range(len(names)):
+    if k >= (len(names) / 2):
+        above.append(names[k])
+    elif k < (len(names) / 2):
+        below.append(names[k])
+
+print('people who made the cut:', below)
+print('people who did not make the cut:',above)
